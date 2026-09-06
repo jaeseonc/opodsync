@@ -25,6 +25,10 @@ class DB extends \SQLite3
 
 		parent::__construct($file);
 
+		// [추가] WAL 모드에서도 강제로 대기 시간을 10분(600,000ms)으로 연장합니다.
+                // SQLite가 무겁게 도는 pcduino3 환경에서 30초 만에 포기하는 것을 방지합니다.
+                $this->exec('PRAGMA busy_timeout = 600000;');
+
 		$mode = strtoupper(SQLITE_JOURNAL_MODE);
 		$set_mode = $this->querySingle('PRAGMA journal_mode;');
 		$set_mode = strtoupper($set_mode);
@@ -126,6 +130,8 @@ class DB extends \SQLite3
 
 	public function simple(string $sql, ...$params): ?\SQLite3Result
 	{
+		@set_time_limit(30);
+
 		$res = $this->prepare2($sql, ...$params)->execute();
 
 		if (is_bool($res)) {

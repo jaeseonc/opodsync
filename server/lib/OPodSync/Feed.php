@@ -37,7 +37,7 @@ class Feed
 	public function sync(): void
 	{
 		$db = DB::getInstance();
-		$db->exec('BEGIN;');
+		$db->exec('BEGIN IMMEDIATE;');
 		$db->upsert('feeds', $this->export(), ['feed_url']);
 		$feed_id = $db->firstColumn('SELECT id FROM feeds WHERE feed_url = ?;', $this->feed_url);
 		$db->simple('UPDATE subscriptions SET feed = ? WHERE url = ?;', $feed_id, $this->feed_url);

@@ -1,0 +1,18 @@
+services:
+  gpodder:
+    container_name: opodsync
+    network_mode: host
+    build:
+      context: ./
+      dockerfile: Dockerfile
+#    command: php -S 0.0.0.0:8080 -d max_execution_time=0 -t /var/www/server
+    command: php -d max_execution_time=0 -S 0.0.0.0:8080
+    working_dir: /var/www/server
+    volumes:
+      - type: bind
+        source: ./server/data
+        target: /var/www/server/data
+      - ./custom-php.ini:/usr/local/etc/php/conf.d/custom-timeout.ini
+    hostname: opodsync.localhost
+#    ports:
+#      - 8080:8080
