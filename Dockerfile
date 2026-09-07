@@ -2,6 +2,10 @@ FROM php:8.5-alpine
 LABEL Maintainer="jschoi260905 - BohwaZ <https://bohwaz.net/>" \
       Description="oPodSync"
 
+RUN apk add --no-cache tzdata && \
+    cp /usr/share/zoneinfo/Asia/Seoul /etc/localtime && \
+    echo "Asia/Seoul" > /etc/timezone
+
 # Setup document root
 RUN mkdir -p /var/www/server/data
 
