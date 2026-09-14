@@ -31,7 +31,7 @@ Requires PHP 7.4+ and SQLite3 with JSON1 extension.
 
 ## Screenshots
 
-<img src="https://github.com/kd2org/opodsync/assets/584819/016b835d-2afe-47ef-86f0-dd8acc51aa89" height=300 /> <img src="https://github.com/kd2org/opodsync/assets/584819/45da98da-ded1-44b3-9607-c114c3fd7dbc" height=300 />
+<img src="scr1.png" height=300 /> <img src="scr2.png" height=300 /> <img src="scr3.png" height=300 />
 
 ## Installation
 
@@ -129,6 +129,7 @@ This server has been tested so far with:
 * [Kasts](https://invent.kde.org/multimedia/kasts) 21.08 - Linux/Windows/Android
 * [PinePods](https://github.com/madeofpendletonwool/PinePods) 0.6.1 - WebServer
 * [Music Assistant](https://www.music-assistant.io/music-providers/gpodder/) (according to their documentation)
+* [Rhythmbox](https://gnome.pages.gitlab.gnome.org/rhythmbox/) 3.5.0 - Linux
 
 Please report if apps work (or not) with other clients.
 
